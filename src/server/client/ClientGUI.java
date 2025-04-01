@@ -1,4 +1,6 @@
-package server;
+package server.client;
+
+import server.server.ServerWindow;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class ClientGUI extends JFrame {
+public class ClientGUI extends JFrame implements ClientView {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 300;
 
@@ -137,12 +139,23 @@ public class ClientGUI extends JFrame {
         panel.add(btnSend, BorderLayout.EAST);
         return panel;
     }
+    @Override
+    public JPanel getPanel() {
+        return headerPanel;
+    }
+
+
 
     @Override
-    protected void processWindowEvent(WindowEvent e) {
-        if (e.getID() == WindowEvent.WINDOW_CLOSING){
-            disconnectFromServer();
-        }
-        super.processWindowEvent(e);
+    public void showMessage(String text) {
+        appendLog(text);
     }
+
+//    @Override
+//    protected void processWindowEvent(WindowEvent e) {
+//        if (e.getID() == WindowEvent.WINDOW_CLOSING){
+//            disconnectFromServer();
+//        }
+//        super.processWindowEvent(e);
+//    }
 }
