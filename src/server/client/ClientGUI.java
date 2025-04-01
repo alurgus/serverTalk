@@ -144,6 +144,10 @@ public class ClientGUI extends JFrame implements ClientView {
         return headerPanel;
     }
 
+    @Override
+    public JTextField getText() {
+        return tfLogin;
+    }
 
 
     @Override
